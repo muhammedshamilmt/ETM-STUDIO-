@@ -156,7 +156,6 @@
             justify-content: space-between;
             align-items: center;
             z-index: 100;
-            mix-blend-mode: difference;
         }
 
         .logo {
@@ -504,7 +503,7 @@
             position: relative;
             width: 100%;
             height: 100%;
-            background: #000;
+            /* background: #000; */
             border: 4px solid var(--brand-yellow);
             border-radius: 30px;
             overflow: hidden;
@@ -1355,7 +1354,7 @@
             /* Higher than inspiration gallery */
             overflow: hidden;
             border-top: 2px solid var(--brand-yellow);
-            box-shadow: 0 -50px 100px rgba(0, 0, 0, 0.5);
+            width: 100%;
         }
 
         .footer-top {
@@ -1485,7 +1484,9 @@
 
     <!-- Navbar -->
     <nav class="navbar">
-        <a href="#" class="logo">ETM</a>
+        <a href="index.html" class="logo">
+            <img src="assets/logo.png" alt="ETM Studio" style="height: 80px; width: auto;">
+        </a>
         <div class="menu-trigger" id="open-menu">
             <div class="menu-line"></div>
             <div class="menu-line"></div>
@@ -1579,9 +1580,7 @@
                 <div class="product-media">
                     <div class="video-card-wrapper" id="video-card">
                         <div class="video-card-main">
-                            <video loop muted playsinline>
-                                <source src="assets/card-video.mp4" type="video/mp4">
-                            </video>
+                            <img src="assets/image.png">
                             <div
                                 class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent pointer-events-none">
                             </div>

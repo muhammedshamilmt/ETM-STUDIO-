@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -40,197 +41,461 @@
             cursor: none;
         }
 
-        .font-gondens { font-family: 'Gondens', sans-serif; }
-        .font-bebas { font-family: 'Bebas Neue', cursive; }
-        .text-brand-yellow { color: var(--brand-yellow); }
-        .bg-brand-red { background-color: var(--brand-red); }
-        .bg-brand-yellow { background-color: var(--brand-yellow); }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 200px 50px 100px;
+        }
+
+        .font-gondens {
+            font-family: 'Gondens', sans-serif;
+        }
+
+        .font-bebas {
+            font-family: 'Bebas Neue', cursive;
+        }
+
+        .text-brand-yellow {
+            color: var(--brand-yellow);
+        }
+
+        .bg-brand-red {
+            background-color: var(--brand-red);
+        }
+
+        .bg-brand-yellow {
+            background-color: var(--brand-yellow);
+        }
 
         /* Custom Scrollbar */
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: var(--brand-red); }
-        ::-webkit-scrollbar-thumb { background: var(--brand-yellow); border-radius: 10px; }
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--brand-red);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--brand-yellow);
+            border-radius: 10px;
+        }
 
         /* Custom Cursor */
         /* Navbar Styles from Index */
         .navbar {
-            position: fixed; top: 0; left: 0; width: 100%; padding: 30px 50px;
-            display: flex; justify-content: space-between; align-items: center;
-            z-index: 100; mix-blend-mode: difference;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 30px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
         }
 
         .logo {
-            font-family: 'Gondens', sans-serif; font-size: 2.5rem;
-            color: var(--brand-white); text-decoration: none; line-height: 1;
+            font-family: 'Gondens', sans-serif;
+            font-size: 2.5rem;
+            color: var(--brand-white);
+            text-decoration: none;
+            line-height: 1;
         }
 
-        .menu-trigger { cursor: pointer; display: flex; flex-direction: column; gap: 8px; padding: 10px; }
-        .menu-line { width: 35px; height: 3px; background-color: var(--brand-white); transition: all 0.3s ease; }
+        .menu-trigger {
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            padding: 10px;
+        }
+
+        .menu-line {
+            width: 35px;
+            height: 3px;
+            background-color: var(--brand-white);
+            transition: all 0.3s ease;
+        }
 
         /* Menu Overlay from Index */
         .menu-overlay {
-            position: fixed; top: -100%; left: 0; width: 100%; height: 100vh;
-            background-color: var(--brand-red); z-index: 200;
-            display: flex; flex-direction: column; justify-content: center;
-            align-items: flex-start; padding-left: 10%;
+            position: fixed;
+            top: -100%;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background-color: var(--brand-red);
+            z-index: 200;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            padding-left: 10%;
             transition: transform 0.8s cubic-bezier(0.85, 0, 0.15, 1);
         }
 
-        .menu-overlay.active { transform: translateY(100%); }
-
-        .menu-close {
-            position: absolute; top: 40px; right: 40px; cursor: pointer;
-            width: 50px; height: 50px; display: flex; align-items: center;
-            justify-content: center; background: rgba(236, 255, 0, 0.1);
-            border-radius: 50%; transition: all 0.3s ease; z-index: 210;
+        .menu-overlay.active {
+            transform: translateY(100%);
         }
 
-        .menu-close:hover { background: var(--brand-yellow); transform: rotate(90deg); }
-        .menu-close svg { width: 24px; height: 24px; stroke: var(--brand-yellow); transition: stroke 0.3s ease; }
-        .menu-close:hover svg { stroke: var(--brand-red); }
+        .menu-close {
+            position: absolute;
+            top: 40px;
+            right: 40px;
+            cursor: pointer;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(236, 255, 0, 0.1);
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            z-index: 210;
+        }
 
-        .menu-list { list-style: none; padding: 0; text-align: left; }
-        .menu-item { margin: 15px 0; }
+        .menu-close:hover {
+            background: var(--brand-yellow);
+            transform: rotate(90deg);
+        }
+
+        .menu-close svg {
+            width: 24px;
+            height: 24px;
+            stroke: var(--brand-yellow);
+            transition: stroke 0.3s ease;
+        }
+
+        .menu-close:hover svg {
+            stroke: var(--brand-red);
+        }
+
+        .menu-list {
+            list-style: none;
+            padding: 0;
+            text-align: left;
+        }
+
+        .menu-item {
+            margin: 15px 0;
+        }
 
         .text-roll {
-            display: block; font-family: 'Gondens', sans-serif;
-            font-size: clamp(2.5rem, 8vw, 5.5rem); color: var(--brand-yellow);
-            text-decoration: none; line-height: 1; position: relative;
-            cursor: pointer; text-transform: uppercase; overflow: hidden;
+            display: block;
+            font-family: 'Gondens', sans-serif;
+            font-size: clamp(2.5rem, 8vw, 5.5rem);
+            color: var(--brand-yellow);
+            text-decoration: none;
+            line-height: 1;
+            position: relative;
+            cursor: pointer;
+            text-transform: uppercase;
+            overflow: hidden;
             letter-spacing: -0.02em;
         }
 
-        .text-roll span { display: inline-block; }
-        .char { display: inline-block; transition: transform 0.6s cubic-bezier(0.76, 0, 0.24, 1); }
-        .text-roll:hover .char { transform: translateY(-100%); }
-        .text-roll .roll-clone { position: absolute; top: 100%; left: 0; display: block; width: 100%; }
+        .text-roll span {
+            display: inline-block;
+        }
+
+        .char {
+            display: inline-block;
+            transition: transform 0.6s cubic-bezier(0.76, 0, 0.24, 1);
+        }
+
+        .text-roll:hover .char {
+            transform: translateY(-100%);
+        }
+
+        .text-roll .roll-clone {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            display: block;
+            width: 100%;
+        }
 
         /* Footer Styles from Index */
         .site-footer {
-            background-color: var(--brand-red); padding: 100px 50px 50px;
-            position: relative; z-index: 100; overflow: hidden;
-            border-top: 2px solid var(--brand-yellow); box-shadow: 0 -50px 100px rgba(0, 0, 0, 0.5);
+            background-color: var(--brand-red);
+            padding: 100px 50px 50px;
+            position: relative;
+            z-index: 100;
+            overflow: hidden;
+            border-top: 2px solid var(--brand-yellow);
             margin-top: 100px;
+            width: 100%;
         }
 
-        .footer-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 100px; flex-wrap: wrap; gap: 50px; }
-        .footer-heading { font-family: 'Gondens', sans-serif; font-size: clamp(2rem, 6vw, 4rem); color: var(--brand-yellow); max-width: 700px; line-height: 1.8; }
-        .footer-links-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 60px; }
-        .footer-column h4 { font-size: 0.8rem; text-transform: uppercase; color: var(--brand-white); opacity: 0.5; margin-bottom: 25px; letter-spacing: 2px; }
-        .footer-link { display: block; font-family: 'Gondens', sans-serif; font-size: 1.8rem; color: var(--brand-yellow); text-decoration: none; margin-bottom: 10px; transition: opacity 0.3s ease; }
-        .footer-link:hover { opacity: 0.6; }
+        .footer-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 100px;
+            flex-wrap: wrap;
+            gap: 50px;
+        }
 
-        .draggable-container { position: relative; height: 300px; width: 100%; margin-top: 50px; border-top: 1px solid rgba(236, 255, 0, 0.2); padding-top: 50px; display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; align-items: center; }
-        .patch { width: 140px; height: 140px; background: var(--brand-yellow); border: 3px solid var(--brand-white); display: flex; align-items: center; justify-content: center; padding: 15px; cursor: grab; position: relative; transform: rotate(-5deg); box-shadow: 10px 10px 0 rgba(0, 0, 0, 0.2); user-select: none; transition: box-shadow 0.2s ease; }
-        .patch:active { cursor: grabbing; box-shadow: 5px 5px 0 rgba(0, 0, 0, 0.2); }
-        .patch-content { font-family: 'Pacifico', cursive; color: var(--brand-red); font-size: 1.2rem; text-align: center; line-height: 1.2; pointer-events: none; }
+        .footer-heading {
+            font-family: 'Gondens', sans-serif;
+            font-size: clamp(2rem, 6vw, 4rem);
+            color: var(--brand-yellow);
+            max-width: 700px;
+            line-height: 1.8;
+        }
 
-        .footer-bottom { margin-top: 100px; display: flex; justify-content: space-between; align-items: center; padding-top: 30px; border-top: 1px solid rgba(255, 255, 255, 0.1); color: var(--brand-white); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; opacity: 0.6; }
+        .footer-links-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 60px;
+        }
+
+        .footer-column h4 {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            color: var(--brand-white);
+            opacity: 0.5;
+            margin-bottom: 25px;
+            letter-spacing: 2px;
+        }
+
+        .footer-link {
+            display: block;
+            font-family: 'Gondens', sans-serif;
+            font-size: 1.8rem;
+            color: var(--brand-yellow);
+            text-decoration: none;
+            margin-bottom: 10px;
+            transition: opacity 0.3s ease;
+            text-align: left;
+        }
+
+        .footer-link:hover {
+            opacity: 0.6;
+        }
+
+        .draggable-container {
+            position: relative;
+            height: 300px;
+            width: 100%;
+            margin-top: 50px;
+            border-top: 1px solid rgba(236, 255, 0, 0.2);
+            padding-top: 50px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .patch {
+            width: 140px;
+            height: 140px;
+            background: var(--brand-yellow);
+            border: 3px solid var(--brand-white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 15px;
+            cursor: grab;
+            position: relative;
+            transform: rotate(-5deg);
+            box-shadow: 10px 10px 0 rgba(0, 0, 0, 0.2);
+            user-select: none;
+            transition: box-shadow 0.2s ease;
+        }
+
+        .patch:active {
+            cursor: grabbing;
+            box-shadow: 5px 5px 0 rgba(0, 0, 0, 0.2);
+        }
+
+        .patch-content {
+            font-family: 'Pacifico', cursive;
+            color: var(--brand-red);
+            font-size: 1.2rem;
+            text-align: center;
+            line-height: 1.2;
+            pointer-events: none;
+        }
+
+        .footer-bottom {
+            margin-top: 100px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--brand-white);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0.6;
+        }
 
         /* Global Custom Cursor */
-        .cursor-follow { position: fixed; top: 0; left: 0; width: 120px; height: 120px; background: var(--brand-yellow); border-radius: 50%; display: flex; align-items: center; justify-content: center; pointer-events: none; z-index: 100000; transform: translate(-50%, -50%); opacity: 0; }
-        .cursor-text { position: absolute; width: 100%; height: 100%; animation: rotateCursorText 10s linear infinite; }
-        .cursor-text svg { width: 100%; height: 100%; }
-        .cursor-text text { font-family: 'Inter', sans-serif; font-weight: 900; font-size: 13px; fill: var(--brand-red); text-transform: uppercase; letter-spacing: 2px; }
-        .cursor-icon { color: var(--brand-red); font-size: 28px; font-weight: 900; position: relative; z-index: 2; }
-        @keyframes rotateCursorText { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        .cursor-follow {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 120px;
+            height: 120px;
+            background: var(--brand-yellow);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            pointer-events: none;
+            z-index: 100000;
+            transform: translate(-50%, -50%);
+            opacity: 0;
+        }
+
+        .cursor-text {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            animation: rotateCursorText 10s linear infinite;
+        }
+
+        .cursor-text svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .cursor-text text {
+            font-family: 'Inter', sans-serif;
+            font-weight: 900;
+            font-size: 13px;
+            fill: var(--brand-red);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .cursor-icon {
+            color: var(--brand-red);
+            font-size: 28px;
+            font-weight: 900;
+            position: relative;
+            z-index: 2;
+        }
+
+        @keyframes rotateCursorText {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
 
         @media (max-width: 1024px) {
-            .navbar { padding: 20px; }
-            .logo { font-size: 2rem; }
-            .footer-top { flex-direction: column; text-align: center; align-items: center; }
-            .footer-links-grid { grid-template-columns: 1fr; gap: 40px; }
+            .navbar {
+                padding: 20px;
+            }
+
+            .logo {
+                font-size: 2rem;
+            }
+
+            .footer-top {
+                flex-direction: column;
+                text-align: center;
+                align-items: center;
+            }
+
+            .footer-links-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
         }
 
         .page-title {
             font-family: 'Gondens', sans-serif;
-            font-size: clamp(3rem, 10vw, 8rem);
+            font-size: clamp(4rem, 15vw, 12rem);
             color: var(--brand-yellow);
             text-transform: uppercase;
-            line-height: 0.9;
-            margin-bottom: 80px;
-            position: relative;
+            line-height: 2;
+            margin-bottom: 120px;
+            letter-spacing: -0.05em;
         }
 
-        .page-title::after {
-            content: '';
+        .legal-section {
+            position: relative;
+            margin-bottom: 150px;
+            padding-left: 100px;
+        }
+
+        .section-number {
             position: absolute;
-            bottom: -20px;
             left: 0;
-            width: 100px;
-            height: 8px;
-            background: var(--brand-yellow);
+            top: 0;
+            font-family: 'Gondens', sans-serif;
+            font-size: 5rem;
+            color: var(--brand-yellow);
+            opacity: 0.2;
+            line-height: 1;
         }
 
-        .legal-content section {
-            margin-bottom: 60px;
-        }
-
-        .legal-content h2 {
+        .legal-section h2 {
             font-family: 'Unbounded', sans-serif;
-            font-size: 1.8rem;
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
             color: var(--brand-yellow);
             text-transform: uppercase;
-            margin-bottom: 20px;
-            letter-spacing: 2px;
+            margin-bottom: 30px;
+            font-weight: 900;
         }
 
-        .legal-content p {
-            font-size: 1.1rem;
+        .legal-section p {
+            font-size: clamp(1rem, 2vw, 1.3rem);
+            line-height: 1.6;
             opacity: 0.9;
-            max-width: 800px;
-            margin-bottom: 20px;
+            max-width: 700px;
         }
 
-        .highlight-box {
-            border: 3px solid var(--brand-yellow);
-            padding: 40px;
-            margin: 40px 0;
+        .chaos-box {
+            background: var(--brand-yellow);
+            color: var(--brand-red);
+            padding: 60px;
+            margin: 60px 0;
+            transform: rotate(-1deg);
+            border: 4px solid var(--brand-white);
             position: relative;
-            background: rgba(236, 255, 0, 0.05);
         }
 
-        .highlight-box::before {
-            content: 'IMPORTANT';
+        .chaos-box p {
+            color: var(--brand-red);
+            font-weight: 700;
+            opacity: 1;
+        }
+
+        .chaos-box::after {
+            content: 'CHAOS NOTE';
             position: absolute;
             top: -15px;
-            left: 20px;
-            background: var(--brand-red);
-            padding: 0 15px;
+            right: 40px;
+            background: var(--brand-white);
+            padding: 5px 20px;
             font-family: 'Inter', sans-serif;
             font-weight: 900;
-            color: var(--brand-yellow);
-            font-size: 0.8rem;
-            letter-spacing: 2px;
+            font-size: 0.7rem;
+            letter-spacing: 3px;
         }
 
-        .punk-divider {
-            height: 2px;
+        .stagger-line {
+            height: 1px;
             background: var(--brand-yellow);
             width: 100%;
             margin: 100px 0;
-            opacity: 0.3;
-            position: relative;
-        }
-
-        .punk-divider::after {
-            content: 'ETM STUDIO // ETM STUDIO';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: var(--brand-red);
-            padding: 0 20px;
-            font-size: 0.7rem;
-            font-weight: 900;
-            letter-spacing: 5px;
-            white-space: nowrap;
+            opacity: 0.2;
         }
 
         footer {
             padding: 50px;
             text-align: center;
-            border-top: 1px solid rgba(255,255,255,0.1);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         footer p {
@@ -240,19 +505,31 @@
         }
 
         @media (max-width: 768px) {
-            .container { padding-top: 120px; }
-            header { padding: 20px; }
-            .logo { font-size: 1.5rem; }
+            .container {
+                padding-top: 120px;
+            }
+
+            header {
+                padding: 20px;
+            }
+
+            .logo {
+                font-size: 1.5rem;
+            }
         }
     </style>
 </head>
+
 <body>
     <!-- Global Custom Cursor -->
     <div class="cursor-follow" id="custom-cursor">
         <div class="cursor-text">
             <svg viewBox="0 0 100 100">
                 <path id="circlePath" d="M 50, 50 m -37, 0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0" fill="none" />
-                <text><textPath xlink:href="#circlePath" id="cursor-text-path">&bull; EXPLORE ETM &bull; JOIN THE CHAOS &bull;</textPath></text>
+                <text>
+                    <textPath xlink:href="#circlePath" id="cursor-text-path">&bull; EXPLORE ETM &bull; JOIN THE CHAOS
+                        &bull;</textPath>
+                </text>
             </svg>
         </div>
         <div class="cursor-icon">✕</div>
@@ -260,7 +537,9 @@
 
     <!-- Navbar -->
     <nav class="navbar">
-        <a href="index.html" class="logo">ETM</a>
+        <a href="index.html" class="logo">
+            <img src="assets/logo.png" alt="ETM Studio" style="height: 80px; width: auto;">
+        </a>
         <div class="menu-trigger" id="open-menu">
             <div class="menu-line"></div>
             <div class="menu-line"></div>
@@ -271,13 +550,15 @@
     <div class="menu-overlay" id="menu-overlay">
         <div class="menu-close" id="close-menu">
             <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line>
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
             </svg>
         </div>
         <ul class="menu-list">
             <li class="menu-item"><a href="products.html" class="text-roll" data-text="PRODUCTS">PRODUCTS</a></li>
             <li class="menu-item"><a href="products.html" class="text-roll" data-text="COLLECTION">COLLECTION</a></li>
-            <li class="menu-item"><a href="shipping-returns.html" class="text-roll" data-text="SHIPPING">SHIPPING</a></li>
+            <li class="menu-item"><a href="shipping-returns.html" class="text-roll" data-text="SHIPPING">SHIPPING</a>
+            </li>
             <li class="menu-item"><a href="faq.html" class="text-roll" data-text="FAQ">FAQ</a></li>
         </ul>
     </div>
@@ -286,37 +567,50 @@
         <h1 class="page-title">Shipping<br>& Returns</h1>
 
         <div class="legal-content">
-            <section>
+            <section class="legal-section">
+                <span class="section-number">01</span>
                 <h2>Shipping Policy</h2>
-                <p>We stitch the chaos and send it your way. Every order is a piece of our world, handled with the same punk-cute energy we put into our designs.</p>
-                <div class="highlight-box">
-                    <p>All items are shipped within 3-5 business days. Once shipped, you'll receive a tracking number via email to follow your package's journey.</p>
+                <p>We stitch the chaos and send it your way. Every order is a piece of our world, handled with the same
+                    punk-cute energy we put into our designs.</p>
+                <div class="chaos-box">
+                    <p>All items are shipped within 3-5 business days. Once shipped, you'll receive a tracking number
+                        via email to follow your package's journey.</p>
                 </div>
             </section>
 
-            <section>
+            <section class="legal-section">
+                <span class="section-number">02</span>
                 <h2>Domestic Shipping</h2>
-                <p>Standard delivery takes approximately 3-7 business days depending on your location. Express options are available at checkout for those who can't wait to join the chaos.</p>
+                <p>Standard delivery takes approximately 3-7 business days depending on your location. Express options
+                    are available at checkout for those who can't wait to join the chaos.</p>
             </section>
 
-            <section>
+            <section class="legal-section">
+                <span class="section-number">03</span>
                 <h2>International Shipping</h2>
-                <p>We ship worldwide. International orders may take 10-21 business days. Please note that customs fees and taxes are the responsibility of the customer.</p>
+                <p>We ship worldwide. International orders may take 10-21 business days. Please note that customs fees
+                    and taxes are the responsibility of the customer.</p>
             </section>
 
-            <div class="punk-divider"></div>
+            <div class="stagger-line"></div>
 
-            <section>
+            <section class="legal-section">
+                <span class="section-number">04</span>
                 <h2>Returns & Exchanges</h2>
-                <p>Not feeling the vibe? We want you to love your ETM pieces. If something isn't right, we're here to fix it.</p>
-                <div class="highlight-box">
-                    <p>Returns must be initiated within 14 days of delivery. Items must be in their original condition: unworn, unwashed, and with all tags attached.</p>
+                <p>Not feeling the vibe? We want you to love your ETM pieces. If something isn't right, we're here to
+                    fix it.</p>
+                <div class="chaos-box"
+                    style="transform: rotate(1deg); background: var(--brand-white); color: var(--brand-red); border-color: var(--brand-yellow);">
+                    <p style="color: var(--brand-red);">Returns must be initiated within 14 days of delivery. Items must
+                        be in their original condition: unworn, unwashed, and with all tags attached.</p>
                 </div>
             </section>
 
-            <section>
+            <section class="legal-section">
+                <span class="section-number">05</span>
                 <h2>How to Return</h2>
-                <p>Drop us an email at chaos@etmstudio.com with your order number and the reason for the return. We'll guide you through the process.</p>
+                <p>Drop us an email at chaos@etmstudio.com with your order number and the reason for the return. We'll
+                    guide you through the process.</p>
             </section>
         </div>
 
@@ -343,15 +637,33 @@
                     </div>
                 </div>
             </div>
+            <!-- Draggable Patches -->
             <div class="draggable-container" id="patches-container">
-                <div class="patch"><div class="patch-content">Punk Cute</div></div>
-                <div class="patch" style="background: #fff;"><div class="patch-content">Stay Wild</div></div>
-                <div class="patch" style="transform: rotate(10deg);"><div class="patch-content">ETM Studio</div></div>
-                <div class="patch" style="background: var(--brand-yellow); border-radius: 50%;"><div class="patch-content">Chaos</div></div>
-                <div class="patch" style="background: #000; color: #fff;"><div class="patch-content" style="color: #fff;">DIY</div></div>
+                <div class="patch">
+                    <div class="patch-content">Punk Cute</div>
+                </div>
+                <div class="patch" style="background: #fff;">
+                    <div class="patch-content">Stay Wild</div>
+                </div>
+                <div class="patch" style="transform: rotate(10deg);">
+                    <div class="patch-content">ETM Studio</div>
+                </div>
+                <div class="patch" style="background: var(--brand-yellow); border-radius: 50%;">
+                    <div class="patch-content">Chaos</div>
+                </div>
+                <div class="patch" style="background: #000; color: #fff;">
+                    <div class="patch-content" style="color: #fff;">DIY</div>
+                </div>
+                <div class="patch" style="transform: rotate(-15deg);">
+                    <div class="patch-content">Hooked</div>
+                </div>
+                <div class="patch" style="background: #ff4d4d;">
+                    <div class="patch-content" style="color: #fff;">Stitch</div>
+                </div>
             </div>
             <div class="footer-bottom">
                 <p>&copy; 2024 ETM STUDIO. ALL RIGHTS RESERVED.</p>
+                <p>PHILADELPHIA 10:26 AM</p>
                 <p>MADE WITH CHAOS</p>
             </div>
         </footer>
@@ -409,4 +721,5 @@
         gsap.from('.legal-content section', { y: 50, opacity: 0, duration: 0.8, stagger: 0.2, delay: 0.3, ease: "power3.out" });
     </script>
 </body>
+
 </html>

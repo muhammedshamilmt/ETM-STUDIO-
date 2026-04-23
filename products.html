@@ -87,7 +87,6 @@
             justify-content: space-between;
             align-items: center;
             z-index: 100;
-            mix-blend-mode: difference;
         }
 
         .logo {
@@ -575,7 +574,7 @@
             z-index: 100;
             overflow: hidden;
             border-top: 2px solid var(--brand-yellow);
-            box-shadow: 0 -50px 100px rgba(0, 0, 0, 0.5);
+            width: 100%;
         }
 
         .footer-top {
@@ -798,7 +797,9 @@
 
     <!-- Navbar -->
     <nav class="navbar">
-        <a href="index.html" class="logo">ETM</a>
+        <a href="index.html" class="logo">
+            <img src="assets/logo.png" alt="ETM Studio" style="height: 80px; width: auto;">
+        </a>
         <div class="menu-trigger" id="open-menu">
             <div class="menu-line"></div>
             <div class="menu-line"></div>
