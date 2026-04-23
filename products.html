@@ -76,36 +76,139 @@
             border-radius: 10px;
         }
 
-        /* Navbar */
-        nav {
+        /* Navbar Styles from Index */
+        .navbar {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
-            padding: 40px 50px;
+            padding: 30px 50px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            z-index: 1000;
+            z-index: 100;
+            mix-blend-mode: difference;
         }
 
         .logo {
             font-family: 'Gondens', sans-serif;
             font-size: 2.5rem;
-            color: var(--brand-yellow);
+            color: var(--brand-white);
             text-decoration: none;
-            letter-spacing: -2px;
+            line-height: 1;
         }
 
-        .back-link {
-            color: white;
-            font-weight: 900;
+        .menu-trigger {
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            padding: 10px;
+        }
+
+        .menu-line {
+            width: 35px;
+            height: 3px;
+            background-color: var(--brand-white);
+            transition: all 0.3s ease;
+        }
+
+        /* Menu Overlay from Index */
+        .menu-overlay {
+            position: fixed;
+            top: -100%;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background-color: var(--brand-red);
+            z-index: 200;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            padding-left: 10%;
+            transition: transform 0.8s cubic-bezier(0.85, 0, 0.15, 1);
+        }
+
+        .menu-overlay.active {
+            transform: translateY(100%);
+        }
+
+        .menu-close {
+            position: absolute;
+            top: 40px;
+            right: 40px;
+            cursor: pointer;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(236, 255, 0, 0.1);
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            z-index: 210;
+        }
+
+        .menu-close:hover {
+            background: var(--brand-yellow);
+            transform: rotate(90deg);
+        }
+
+        .menu-close svg {
+            width: 24px;
+            height: 24px;
+            stroke: var(--brand-yellow);
+            transition: stroke 0.3s ease;
+        }
+
+        .menu-close:hover svg {
+            stroke: var(--brand-red);
+        }
+
+        .menu-list {
+            list-style: none;
+            padding: 0;
+            text-align: left;
+        }
+
+        .menu-item {
+            margin: 15px 0;
+        }
+
+        .text-roll {
+            display: block;
+            font-family: 'Gondens', sans-serif;
+            font-size: clamp(2.5rem, 8vw, 5.5rem);
+            color: var(--brand-yellow);
             text-decoration: none;
+            line-height: 1;
+            position: relative;
+            cursor: pointer;
             text-transform: uppercase;
-            letter-spacing: 2px;
-            font-size: 0.8rem;
-            border-bottom: 2px solid var(--brand-yellow);
-            padding-bottom: 5px;
+            overflow: hidden;
+            letter-spacing: -0.02em;
+        }
+
+        .text-roll span {
+            display: inline-block;
+        }
+
+        .char {
+            display: inline-block;
+            transition: transform 0.6s cubic-bezier(0.76, 0, 0.24, 1);
+        }
+
+        .text-roll:hover .char {
+            transform: translateY(-100%);
+        }
+
+        .text-roll .roll-clone {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            display: block;
+            width: 100%;
         }
 
         /* Products Grid */
@@ -117,22 +220,22 @@
 
         .products-title {
             font-family: 'Gondens', sans-serif;
-            font-size: clamp(2.5rem, 9vw, 7rem);
+            font-size: clamp(3rem, 10vw, 8rem);
             color: var(--brand-yellow);
             text-transform: uppercase;
             line-height: 1;
-            margin-bottom: 60px;
+            margin-bottom: 160px;
             text-align: center;
+
         }
 
         .cards-container {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 80px 40px;
-            max-width: 1300px;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 80px 30px;
+            max-width: 1500px;
             margin: 0 auto;
             padding: 0 40px;
-            padding-top: 100px;
         }
 
         .product-card-v {
@@ -190,7 +293,6 @@
             left: 30px;
             z-index: 3;
             color: #fff;
-            line-height: 3.5;
         }
 
         .card-name {
@@ -206,7 +308,6 @@
             font-weight: 700;
         }
 
-        /* Specific Backgrounds */
         .card-rosetta .card-bg-shape {
             background: linear-gradient(135deg, var(--brand-red), #ff4d4d);
         }
@@ -361,9 +462,9 @@
         }
 
         .detail-title {
-            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            font-size: clamp(3rem, 6vw, 5rem);
             font-family: 'Gondens', sans-serif;
-            line-height: 1.4;
+            line-height: 0.9;
             color: var(--brand-white);
             text-transform: uppercase;
             margin-bottom: 10px;
@@ -412,7 +513,7 @@
             border: none;
             cursor: pointer;
             width: fit-content;
-            margin-bottom: 70px;
+            margin-bottom: 50px;
             transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
@@ -466,7 +567,123 @@
             transform: rotate(90deg);
         }
 
-        /* Cursor */
+        /* Footer Styles from Index */
+        .site-footer {
+            background-color: var(--brand-red);
+            padding: 100px 50px 50px;
+            position: relative;
+            z-index: 100;
+            overflow: hidden;
+            border-top: 2px solid var(--brand-yellow);
+            box-shadow: 0 -50px 100px rgba(0, 0, 0, 0.5);
+        }
+
+        .footer-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 100px;
+            flex-wrap: wrap;
+            gap: 50px;
+        }
+
+        .footer-heading {
+            font-family: 'Gondens', sans-serif;
+            font-size: clamp(2rem, 6vw, 4rem);
+            color: var(--brand-yellow);
+            max-width: 700px;
+            line-height: 1.8;
+        }
+
+        .footer-links-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 60px;
+        }
+
+        .footer-column h4 {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            color: var(--brand-white);
+            opacity: 0.5;
+            margin-bottom: 25px;
+            letter-spacing: 2px;
+        }
+
+        .footer-link {
+            display: block;
+            font-family: 'Gondens', sans-serif;
+            font-size: 1.8rem;
+            color: var(--brand-yellow);
+            text-decoration: none;
+            margin-bottom: 10px;
+            transition: opacity 0.3s ease;
+        }
+
+        .footer-link:hover {
+            opacity: 0.6;
+        }
+
+        .draggable-container {
+            position: relative;
+            height: 300px;
+            width: 100%;
+            margin-top: 50px;
+            border-top: 1px solid rgba(236, 255, 0, 0.2);
+            padding-top: 50px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .patch {
+            width: 140px;
+            height: 140px;
+            background: var(--brand-yellow);
+            border: 3px solid var(--brand-white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 15px;
+            cursor: grab;
+            position: relative;
+            transform: rotate(-5deg);
+            box-shadow: 10px 10px 0 rgba(0, 0, 0, 0.2);
+            user-select: none;
+            transition: box-shadow 0.2s ease;
+        }
+
+        .patch:active {
+            cursor: grabbing;
+            box-shadow: 5px 5px 0 rgba(0, 0, 0, 0.2);
+        }
+
+        .patch-content {
+            font-family: 'Pacifico', cursive;
+            color: var(--brand-red);
+            font-size: 1.2rem;
+            text-align: center;
+            line-height: 1.2;
+            pointer-events: none;
+        }
+
+        .footer-bottom {
+            margin-top: 100px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--brand-white);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0.6;
+        }
+
+        /* Global Custom Cursor */
         .cursor-follow {
             position: fixed;
             top: 0;
@@ -481,18 +698,57 @@
             pointer-events: none;
             z-index: 100000;
             transform: translate(-50%, -50%);
+            opacity: 0;
         }
 
         .cursor-text {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            animation: rotateCursorText 10s linear infinite;
+        }
+
+        .cursor-text svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .cursor-text text {
             font-family: 'Inter', sans-serif;
             font-weight: 900;
-            font-size: 12px;
-            color: var(--brand-red);
+            font-size: 13px;
+            fill: var(--brand-red);
             text-transform: uppercase;
             letter-spacing: 2px;
         }
 
+        .cursor-icon {
+            color: var(--brand-red);
+            font-size: 28px;
+            font-weight: 900;
+            position: relative;
+            z-index: 2;
+        }
+
+        @keyframes rotateCursorText {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
         @media (max-width: 1024px) {
+            .navbar {
+                padding: 20px;
+            }
+
+            .logo {
+                font-size: 2rem;
+            }
+
             .detail-layout {
                 grid-template-columns: 1fr;
             }
@@ -503,6 +759,17 @@
 
             .cards-container {
                 grid-template-columns: 1fr 1fr;
+            }
+
+            .footer-top {
+                flex-direction: column;
+                text-align: center;
+                align-items: center;
+            }
+
+            .footer-links-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
             }
         }
 
@@ -515,21 +782,52 @@
 </head>
 
 <body>
-    <div class="cursor-follow">
-        <div class="cursor-text">View Kit</div>
+    <!-- Global Custom Cursor -->
+    <div class="cursor-follow" id="custom-cursor">
+        <div class="cursor-text">
+            <svg viewBox="0 0 100 100">
+                <path id="circlePath" d="M 50, 50 m -37, 0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0" fill="none" />
+                <text>
+                    <textPath xlink:href="#circlePath" id="cursor-text-path">&bull; EXPLORE ETM &bull; JOIN THE CHAOS
+                        &bull;</textPath>
+                </text>
+            </svg>
+        </div>
+        <div class="cursor-icon">✕</div>
     </div>
 
-    <nav>
-        <a href="index.html" class="logo">ETM STUDIO</a>
-        <a href="index.html" class="back-link">Back to Home</a>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <a href="index.html" class="logo">ETM</a>
+        <div class="menu-trigger" id="open-menu">
+            <div class="menu-line"></div>
+            <div class="menu-line"></div>
+        </div>
     </nav>
+
+    <!-- Menu Overlay -->
+    <div class="menu-overlay" id="menu-overlay">
+        <div class="menu-close" id="close-menu">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+        </div>
+        <ul class="menu-list">
+            <li class="menu-item"><a href="products.html" class="text-roll" data-text="PRODUCTS">PRODUCTS</a></li>
+            <li class="menu-item"><a href="products.html" class="text-roll" data-text="COLLECTION">COLLECTION</a></li>
+            <li class="menu-item"><a href="shipping-returns.html" class="text-roll" data-text="SHIPPING">SHIPPING</a>
+            </li>
+            <li class="menu-item"><a href="faq.html" class="text-roll" data-text="FAQ">FAQ</a></li>
+        </ul>
+    </div>
 
     <main>
         <section class="products-grid-section">
             <h2 class="products-title">Shop Kits</h2>
             <div class="cards-container">
                 <!-- Product 1 -->
-                <div class="product-card-v card-rosetta"
+                <div class="product-card-v card-rosetta" data-cursor-text="&bull; GRAB YOURS &bull; SHOP NOW &bull;"
                     onclick="openDetail(event, 'STITCH ROE', 'Limited Edition', 'Meet Rosetta, the garden fairy of the punk world. This kit includes high-tension yarn and a pattern book that breaks all the rules.', 'var(--brand-red)')">
                     <div class="card-bg-shape"></div>
                     <div class="card-image-box"><img src="assets/image.png" alt="Stitch Roe"></div>
@@ -539,7 +837,7 @@
                     </div>
                 </div>
                 <!-- Product 2 -->
-                <div class="product-card-v card-sadness"
+                <div class="product-card-v card-sadness" data-cursor-text="&bull; GRAB YOURS &bull; SHOP NOW &bull;"
                     onclick="openDetail(event, 'GLOOM STITCH', 'Exclusive', 'Sadness never looked so cute. A deep blue masterpiece with studded details and a soft, melancholic touch.', '#0056b3')">
                     <div class="card-bg-shape"></div>
                     <div class="card-image-box"><img src="assets/image.png" alt="Gloom Stitch"></div>
@@ -549,7 +847,7 @@
                     </div>
                 </div>
                 <!-- Product 3 -->
-                <div class="product-card-v card-disgust"
+                <div class="product-card-v card-disgust" data-cursor-text="&bull; GRAB YOURS &bull; SHOP NOW &bull;"
                     onclick="openDetail(event, 'VIBE CHECK', 'Premium', 'A sassy, high-fashion crochet mascot. Features neon green accents and a specialized hook for complex patterns.', '#2d5a27')">
                     <div class="card-bg-shape"></div>
                     <div class="card-image-box"><img src="assets/image.png" alt="Vibe Check"></div>
@@ -559,7 +857,87 @@
                     </div>
                 </div>
                 <!-- Product 4 -->
-                <div class="product-card-v card-judy"
+                <div class="product-card-v card-judy" data-cursor-text="&bull; GRAB YOURS &bull; SHOP NOW &bull;"
+                    onclick="openDetail(event, 'HOPPS PUNK', 'Collector', 'Fast, edgy, and optimistic. This bunny-inspired kit is perfect for those who want to finish projects in record time.', '#3f51b5')">
+                    <div class="card-bg-shape"></div>
+                    <div class="card-image-box"><img src="assets/image.png" alt="Hopps Punk"></div>
+                    <div class="card-info-box">
+                        <h3 class="card-name">HOPPS PUNK</h3>
+                        <p class="card-movie">Kit No. 004</p>
+                    </div>
+                </div>
+                <!-- Product 1 -->
+                <div class="product-card-v card-rosetta" data-cursor-text="&bull; GRAB YOURS &bull; SHOP NOW &bull;"
+                    onclick="openDetail(event, 'STITCH ROE', 'Limited Edition', 'Meet Rosetta, the garden fairy of the punk world. This kit includes high-tension yarn and a pattern book that breaks all the rules.', 'var(--brand-red)')">
+                    <div class="card-bg-shape"></div>
+                    <div class="card-image-box"><img src="assets/image.png" alt="Stitch Roe"></div>
+                    <div class="card-info-box">
+                        <h3 class="card-name">STITCH ROE</h3>
+                        <p class="card-movie">Kit No. 001</p>
+                    </div>
+                </div>
+                <!-- Product 2 -->
+                <div class="product-card-v card-sadness" data-cursor-text="&bull; GRAB YOURS &bull; SHOP NOW &bull;"
+                    onclick="openDetail(event, 'GLOOM STITCH', 'Exclusive', 'Sadness never looked so cute. A deep blue masterpiece with studded details and a soft, melancholic touch.', '#0056b3')">
+                    <div class="card-bg-shape"></div>
+                    <div class="card-image-box"><img src="assets/image.png" alt="Gloom Stitch"></div>
+                    <div class="card-info-box">
+                        <h3 class="card-name">GLOOM STITCH</h3>
+                        <p class="card-movie">Kit No. 002</p>
+                    </div>
+                </div>
+                <!-- Product 3 -->
+                <div class="product-card-v card-disgust" data-cursor-text="&bull; GRAB YOURS &bull; SHOP NOW &bull;"
+                    onclick="openDetail(event, 'VIBE CHECK', 'Premium', 'A sassy, high-fashion crochet mascot. Features neon green accents and a specialized hook for complex patterns.', '#2d5a27')">
+                    <div class="card-bg-shape"></div>
+                    <div class="card-image-box"><img src="assets/image.png" alt="Vibe Check"></div>
+                    <div class="card-info-box">
+                        <h3 class="card-name">VIBE CHECK</h3>
+                        <p class="card-movie">Kit No. 003</p>
+                    </div>
+                </div>
+                <!-- Product 4 -->
+                <div class="product-card-v card-judy" data-cursor-text="&bull; GRAB YOURS &bull; SHOP NOW &bull;"
+                    onclick="openDetail(event, 'HOPPS PUNK', 'Collector', 'Fast, edgy, and optimistic. This bunny-inspired kit is perfect for those who want to finish projects in record time.', '#3f51b5')">
+                    <div class="card-bg-shape"></div>
+                    <div class="card-image-box"><img src="assets/image.png" alt="Hopps Punk"></div>
+                    <div class="card-info-box">
+                        <h3 class="card-name">HOPPS PUNK</h3>
+                        <p class="card-movie">Kit No. 004</p>
+                    </div>
+                </div>
+                <!-- Product 1 -->
+                <div class="product-card-v card-rosetta" data-cursor-text="&bull; GRAB YOURS &bull; SHOP NOW &bull;"
+                    onclick="openDetail(event, 'STITCH ROE', 'Limited Edition', 'Meet Rosetta, the garden fairy of the punk world. This kit includes high-tension yarn and a pattern book that breaks all the rules.', 'var(--brand-red)')">
+                    <div class="card-bg-shape"></div>
+                    <div class="card-image-box"><img src="assets/image.png" alt="Stitch Roe"></div>
+                    <div class="card-info-box">
+                        <h3 class="card-name">STITCH ROE</h3>
+                        <p class="card-movie">Kit No. 001</p>
+                    </div>
+                </div>
+                <!-- Product 2 -->
+                <div class="product-card-v card-sadness" data-cursor-text="&bull; GRAB YOURS &bull; SHOP NOW &bull;"
+                    onclick="openDetail(event, 'GLOOM STITCH', 'Exclusive', 'Sadness never looked so cute. A deep blue masterpiece with studded details and a soft, melancholic touch.', '#0056b3')">
+                    <div class="card-bg-shape"></div>
+                    <div class="card-image-box"><img src="assets/image.png" alt="Gloom Stitch"></div>
+                    <div class="card-info-box">
+                        <h3 class="card-name">GLOOM STITCH</h3>
+                        <p class="card-movie">Kit No. 002</p>
+                    </div>
+                </div>
+                <!-- Product 3 -->
+                <div class="product-card-v card-disgust" data-cursor-text="&bull; GRAB YOURS &bull; SHOP NOW &bull;"
+                    onclick="openDetail(event, 'VIBE CHECK', 'Premium', 'A sassy, high-fashion crochet mascot. Features neon green accents and a specialized hook for complex patterns.', '#2d5a27')">
+                    <div class="card-bg-shape"></div>
+                    <div class="card-image-box"><img src="assets/image.png" alt="Vibe Check"></div>
+                    <div class="card-info-box">
+                        <h3 class="card-name">VIBE CHECK</h3>
+                        <p class="card-movie">Kit No. 003</p>
+                    </div>
+                </div>
+                <!-- Product 4 -->
+                <div class="product-card-v card-judy" data-cursor-text="&bull; GRAB YOURS &bull; SHOP NOW &bull;"
                     onclick="openDetail(event, 'HOPPS PUNK', 'Collector', 'Fast, edgy, and optimistic. This bunny-inspired kit is perfect for those who want to finish projects in record time.', '#3f51b5')">
                     <div class="card-bg-shape"></div>
                     <div class="card-image-box"><img src="assets/image.png" alt="Hopps Punk"></div>
@@ -570,6 +948,52 @@
                 </div>
             </div>
         </section>
+
+        <!-- Footer -->
+        <footer class="site-footer" data-cursor-text="&bull; DRAG ME &bull; STITCH ME &bull;">
+            <div class="footer-top">
+                <h2 class="footer-heading">READY TO <br> STITCH THE CHAOS TOGETHER?</h2>
+                <div class="footer-links-grid">
+                    <div class="footer-column">
+                        <h4>Explore</h4>
+                        <a href="products.html" class="footer-link">Products</a>
+                        <a href="products.html" class="footer-link">Collection</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Support</h4>
+                        <a href="shipping-returns.html" class="footer-link">Shipping & Returns</a>
+                        <a href="faq.html" class="footer-link">FAQ</a>
+                        <a href="privacy-policy.html" class="footer-link">Privacy Policy</a>
+                        <a href="terms-conditions.html" class="footer-link">Terms & Conditions</a>
+                        <h4 style="margin-top: 40px;">Connect</h4>
+                        <a href="#" class="footer-link">Instagram ↗</a>
+                        <a href="#" class="footer-link">Email ↗</a>
+                        <a href="#" class="footer-link">TikTok ↗</a>
+                    </div>
+                </div>
+            </div>
+            <div class="draggable-container" id="patches-container">
+                <div class="patch">
+                    <div class="patch-content">Punk Cute</div>
+                </div>
+                <div class="patch" style="background: #fff;">
+                    <div class="patch-content">Stay Wild</div>
+                </div>
+                <div class="patch" style="transform: rotate(10deg);">
+                    <div class="patch-content">ETM Studio</div>
+                </div>
+                <div class="patch" style="background: var(--brand-yellow); border-radius: 50%;">
+                    <div class="patch-content">Chaos</div>
+                </div>
+                <div class="patch" style="background: #000; color: #fff;">
+                    <div class="patch-content" style="color: #fff;">DIY</div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 ETM STUDIO. ALL RIGHTS RESERVED.</p>
+                <p>MADE WITH CHAOS</p>
+            </div>
+        </footer>
     </main>
 
     <!-- Detail Overlay -->
@@ -586,8 +1010,6 @@
                     style="writing-mode: vertical-rl; transform: rotate(180deg); font-weight: 900; font-size: 2rem; color: var(--brand-yellow); margin-bottom: auto; letter-spacing: 4px; opacity: 0.8;">
                     NAME</div>
                 <div class="sidebar-item active"><img src="assets/image.png"
-                        style="width:100%; height:100%; object-fit:cover;"></div>
-                <div class="sidebar-item"><img src="assets/image.png"
                         style="width:100%; height:100%; object-fit:cover;"></div>
                 <div class="sidebar-item"><img src="assets/image.png"
                         style="width:100%; height:100%; object-fit:cover;"></div>
@@ -642,27 +1064,53 @@
         function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
         requestAnimationFrame(raf);
 
-        const cursor = document.querySelector('.cursor-follow');
-        window.addEventListener('mousemove', (e) => { gsap.to(cursor, { x: e.clientX, y: e.clientY, duration: 0.3, ease: "power2.out" }); });
+        const globalCursor = document.getElementById('custom-cursor');
+        const cursorTextPath = document.getElementById('cursor-text-path');
+        window.addEventListener('mousemove', (e) => {
+            gsap.to(globalCursor, { x: e.clientX, y: e.clientY, opacity: 1, duration: 0.4, ease: "power2.out" });
+            const target = e.target.closest('[data-cursor-text]');
+            if (target) {
+                const newText = target.getAttribute('data-cursor-text');
+                if (cursorTextPath.innerHTML !== newText) cursorTextPath.innerHTML = newText;
+            } else {
+                cursorTextPath.innerHTML = "&bull; EXPLORE ETM &bull; JOIN THE CHAOS &bull;";
+            }
+        });
+
+        // Menu Logic
+        const openMenu = document.getElementById('open-menu');
+        const closeMenu = document.getElementById('close-menu');
+        const menuOverlay = document.getElementById('menu-overlay');
+        openMenu.addEventListener('click', () => { menuOverlay.classList.add('active'); lenis.stop(); gsap.from(".menu-item", { y: 50, opacity: 0, duration: 0.8, stagger: 0.1, ease: "power4.out", delay: 0.4 }); });
+        closeMenu.addEventListener('click', () => { menuOverlay.classList.remove('active'); lenis.start(); });
+
+        // TextRoll
+        const textRolls = document.querySelectorAll('.text-roll');
+        textRolls.forEach(el => {
+            const text = el.getAttribute('data-text'); el.innerHTML = '';
+            const mainSpan = document.createElement('span'); mainSpan.classList.add('roll-main');
+            const cloneSpan = document.createElement('span'); cloneSpan.classList.add('roll-clone');
+            text.split('').forEach((char, i) => {
+                const charSpan = document.createElement('span'); charSpan.classList.add('char');
+                charSpan.innerText = char === ' ' ? '\u00A0' : char; charSpan.style.transitionDelay = `${i * 0.03}s`;
+                mainSpan.appendChild(charSpan);
+                const charClone = document.createElement('span'); charClone.classList.add('char');
+                charClone.innerText = char === ' ' ? '\u00A0' : char; charClone.style.transitionDelay = `${i * 0.03}s`;
+                cloneSpan.appendChild(charClone);
+            });
+            el.appendChild(mainSpan); el.appendChild(cloneSpan);
+        });
+
+        // Draggable Patches
+        Draggable.create(".patch", { type: "x,y", edgeResistance: 0.65, bounds: "#patches-container", inertia: true });
 
         const overlay = document.getElementById('detail-overlay');
         function openDetail(e, name, tag, desc, color) {
-            document.getElementById('detail-title').innerText = name;
-            document.getElementById('detail-movie').innerText = tag;
-            document.getElementById('detail-desc').innerText = desc;
-            document.getElementById('sidebar-name').innerText = name;
-            overlay.style.display = 'block';
-            lenis.stop();
-            gsap.to(overlay, { bottom: 0, duration: 1.2, ease: "expo.out" });
+            document.getElementById('detail-title').innerText = name; document.getElementById('detail-movie').innerText = tag; document.getElementById('detail-desc').innerText = desc; document.getElementById('sidebar-name').innerText = name;
+            overlay.style.display = 'block'; lenis.stop(); gsap.to(overlay, { bottom: 0, duration: 1.2, ease: "expo.out" });
             gsap.from(".detail-info > *", { y: 50, opacity: 0, duration: 0.8, stagger: 0.05, delay: 0.3, ease: "power4.out" });
         }
-        function closeDetail() {
-            gsap.to(overlay, { bottom: "-100%", duration: 0.8, ease: "power4.inOut", onComplete: () => { overlay.style.display = 'none'; lenis.start(); } });
-        }
-        document.querySelectorAll('.product-card-v').forEach(card => {
-            card.addEventListener('mouseenter', () => { gsap.to(cursor, { scale: 1.2, backgroundColor: '#FFFFFF', duration: 0.3 }); cursor.querySelector('.cursor-text').innerText = "Open Kit"; });
-            card.addEventListener('mouseleave', () => { gsap.to(cursor, { scale: 1, backgroundColor: '#ECFF00', duration: 0.3 }); cursor.querySelector('.cursor-text').innerText = "View Kit"; });
-        });
+        function closeDetail() { gsap.to(overlay, { bottom: "-100%", duration: 0.8, ease: "power4.inOut", onComplete: () => { overlay.style.display = 'none'; lenis.start(); } }); }
     </script>
 </body>
 
