@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shipping & Returns | ETM Studio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lenis@1.1.14/dist/lenis.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/Draggable.min.js"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@900&family=Inter:wght@400;700;900&family=Bebas+Neue&family=Pacifico&family=Syne:wght@800&family=Unbounded:wght@900&family=Cormorant+Garamond:ital,wght@0,300;0,700;1,400&display=swap"
+        rel="stylesheet">
+
+    <style>
+        @font-face {
+            font-family: 'Gondens';
+            src: url('Gondens DEMO.otf') format('opentype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        :root {
+            --brand-red: #E01A1A;
+            --brand-yellow: #ECFF00;
+            --brand-white: #FFFFFF;
+        }
+
+        body {
+            background-color: var(--brand-red);
+            color: var(--brand-white);
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+            margin: 0;
+            padding: 0;
+            cursor: none;
+        }
+
+        .font-gondens { font-family: 'Gondens', sans-serif; }
+        .font-bebas { font-family: 'Bebas Neue', cursive; }
+        .text-brand-yellow { color: var(--brand-yellow); }
+        .bg-brand-red { background-color: var(--brand-red); }
+        .bg-brand-yellow { background-color: var(--brand-yellow); }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--brand-red); }
+        ::-webkit-scrollbar-thumb { background: var(--brand-yellow); border-radius: 10px; }
+
+        /* Custom Cursor */
+        .cursor-follow {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 80px;
+            height: 80px;
+            background: var(--brand-yellow);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            pointer-events: none;
+            z-index: 9999;
+            transform: translate(-50%, -50%);
+            transition: width 0.3s, height 0.3s;
+        }
+
+        .cursor-icon {
+            color: var(--brand-red);
+            font-size: 20px;
+            font-weight: 900;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 150px 50px 100px;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 40px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            background: linear-gradient(to bottom, var(--brand-red) 70%, transparent);
+        }
+
+        .logo {
+            font-family: 'Gondens', sans-serif;
+            font-size: 2rem;
+            color: var(--brand-yellow);
+            text-decoration: none;
+            text-transform: uppercase;
+        }
+
+        .back-btn {
+            font-family: 'Inter', sans-serif;
+            font-weight: 900;
+            text-transform: uppercase;
+            color: var(--brand-white);
+            text-decoration: none;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            border-bottom: 2px solid var(--brand-yellow);
+            padding-bottom: 5px;
+            transition: opacity 0.3s;
+        }
+
+        .page-title {
+            font-family: 'Gondens', sans-serif;
+            font-size: clamp(3rem, 10vw, 8rem);
+            color: var(--brand-yellow);
+            text-transform: uppercase;
+            line-height: 0.9;
+            margin-bottom: 80px;
+            position: relative;
+        }
+
+        .page-title::after {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            left: 0;
+            width: 100px;
+            height: 8px;
+            background: var(--brand-yellow);
+        }
+
+        .legal-content section {
+            margin-bottom: 60px;
+        }
+
+        .legal-content h2 {
+            font-family: 'Unbounded', sans-serif;
+            font-size: 1.8rem;
+            color: var(--brand-yellow);
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+
+        .legal-content p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            max-width: 800px;
+            margin-bottom: 20px;
+        }
+
+        .highlight-box {
+            border: 3px solid var(--brand-yellow);
+            padding: 40px;
+            margin: 40px 0;
+            position: relative;
+            background: rgba(236, 255, 0, 0.05);
+        }
+
+        .highlight-box::before {
+            content: 'IMPORTANT';
+            position: absolute;
+            top: -15px;
+            left: 20px;
+            background: var(--brand-red);
+            padding: 0 15px;
+            font-family: 'Inter', sans-serif;
+            font-weight: 900;
+            color: var(--brand-yellow);
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+        }
+
+        .punk-divider {
+            height: 2px;
+            background: var(--brand-yellow);
+            width: 100%;
+            margin: 100px 0;
+            opacity: 0.3;
+            position: relative;
+        }
+
+        .punk-divider::after {
+            content: 'ETM STUDIO // ETM STUDIO';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: var(--brand-red);
+            padding: 0 20px;
+            font-size: 0.7rem;
+            font-weight: 900;
+            letter-spacing: 5px;
+            white-space: nowrap;
+        }
+
+        footer {
+            padding: 50px;
+            text-align: center;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        footer p {
+            font-size: 0.8rem;
+            opacity: 0.5;
+            letter-spacing: 2px;
+        }
+
+        @media (max-width: 768px) {
+            .container { padding-top: 120px; }
+            header { padding: 20px; }
+            .logo { font-size: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="cursor-follow">
+        <div class="cursor-icon">★</div>
+    </div>
+
+    <header>
+        <a href="index.html" class="logo">ETM STUDIO</a>
+        <a href="index.html" class="back-btn">Back to Studio</a>
+    </header>
+
+    <main class="container">
+        <h1 class="page-title">Shipping<br>& Returns</h1>
+
+        <div class="legal-content">
+            <section>
+                <h2>Shipping Policy</h2>
+                <p>We stitch the chaos and send it your way. Every order is a piece of our world, handled with the same punk-cute energy we put into our designs.</p>
+                <div class="highlight-box">
+                    <p>All items are shipped within 3-5 business days. Once shipped, you'll receive a tracking number via email to follow your package's journey.</p>
+                </div>
+            </section>
+
+            <section>
+                <h2>Domestic Shipping</h2>
+                <p>Standard delivery takes approximately 3-7 business days depending on your location. Express options are available at checkout for those who can't wait to join the chaos.</p>
+            </section>
+
+            <section>
+                <h2>International Shipping</h2>
+                <p>We ship worldwide. International orders may take 10-21 business days. Please note that customs fees and taxes are the responsibility of the customer.</p>
+            </section>
+
+            <div class="punk-divider"></div>
+
+            <section>
+                <h2>Returns & Exchanges</h2>
+                <p>Not feeling the vibe? We want you to love your ETM pieces. If something isn't right, we're here to fix it.</p>
+                <div class="highlight-box">
+                    <p>Returns must be initiated within 14 days of delivery. Items must be in their original condition: unworn, unwashed, and with all tags attached.</p>
+                </div>
+            </section>
+
+            <section>
+                <h2>How to Return</h2>
+                <p>Drop us an email at chaos@etmstudio.com with your order number and the reason for the return. We'll guide you through the process.</p>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 ETM STUDIO. STITCHING THE CHAOS WORLDWIDE.</p>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.19/bundled/lenis.min.js"></script>
+    <script>
+        // Lenis Smooth Scroll
+        const lenis = new Lenis();
+        function raf(time) {
+            lenis.raf(time);
+            requestAnimationFrame(raf);
+        }
+        requestAnimationFrame(raf);
+
+        // Custom Cursor Logic
+        const cursor = document.querySelector('.cursor-follow');
+        
+        window.addEventListener('mousemove', (e) => {
+            gsap.to(cursor, {
+                x: e.clientX,
+                y: e.clientY,
+                duration: 0.3,
+                ease: "power2.out"
+            });
+        });
+
+        // Hover effects
+        const links = document.querySelectorAll('a, button');
+        links.forEach(link => {
+            link.addEventListener('mouseenter', () => {
+                gsap.to(cursor, {
+                    scale: 1.5,
+                    backgroundColor: '#FFFFFF',
+                    duration: 0.3
+                });
+            });
+            link.addEventListener('mouseleave', () => {
+                gsap.to(cursor, {
+                    scale: 1,
+                    backgroundColor: '#ECFF00',
+                    duration: 0.3
+                });
+            });
+        });
+
+        // Initial animation
+        gsap.from('.page-title', {
+            y: 100,
+            opacity: 0,
+            duration: 1,
+            ease: "power4.out"
+        });
+        
+        gsap.from('.legal-content section', {
+            y: 50,
+            opacity: 0,
+            duration: 0.8,
+            stagger: 0.2,
+            delay: 0.3,
+            ease: "power3.out"
+        });
+    </script>
+</body>
+</html>

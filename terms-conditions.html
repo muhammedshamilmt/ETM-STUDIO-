@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms & Conditions | ETM Studio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lenis@1.1.14/dist/lenis.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/Draggable.min.js"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@900&family=Inter:wght@400;700;900&family=Bebas+Neue&family=Pacifico&family=Syne:wght@800&family=Unbounded:wght@900&family=Cormorant+Garamond:ital,wght@0,300;0,700;1,400&display=swap"
+        rel="stylesheet">
+
+    <style>
+        @font-face {
+            font-family: 'Gondens';
+            src: url('Gondens DEMO.otf') format('opentype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        :root {
+            --brand-red: #E01A1A;
+            --brand-yellow: #ECFF00;
+            --brand-white: #FFFFFF;
+        }
+
+        body {
+            background-color: var(--brand-red);
+            color: var(--brand-white);
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+            margin: 0;
+            padding: 0;
+            cursor: none;
+        }
+
+        .font-gondens { font-family: 'Gondens', sans-serif; }
+        .font-bebas { font-family: 'Bebas Neue', cursive; }
+        .text-brand-yellow { color: var(--brand-yellow); }
+        .bg-brand-red { background-color: var(--brand-red); }
+        .bg-brand-yellow { background-color: var(--brand-yellow); }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--brand-red); }
+        ::-webkit-scrollbar-thumb { background: var(--brand-yellow); border-radius: 10px; }
+
+        .cursor-follow {
+            position: fixed; top: 0; left: 0; width: 80px; height: 80px;
+            background: var(--brand-yellow); border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            pointer-events: none; z-index: 9999; transform: translate(-50%, -50%);
+        }
+
+        .cursor-icon { color: var(--brand-red); font-size: 20px; font-weight: 900; }
+
+        .container { max-width: 1000px; margin: 0 auto; padding: 150px 50px 100px; }
+
+        header {
+            position: fixed; top: 0; left: 0; width: 100%; padding: 40px 50px;
+            display: flex; justify-content: space-between; align-items: center;
+            z-index: 100; background: linear-gradient(to bottom, var(--brand-red) 70%, transparent);
+        }
+
+        .logo { font-family: 'Gondens', sans-serif; font-size: 2rem; color: var(--brand-yellow); text-decoration: none; text-transform: uppercase; }
+
+        .back-btn { font-family: 'Inter', sans-serif; font-weight: 900; text-transform: uppercase; color: var(--brand-white); text-decoration: none; font-size: 0.9rem; letter-spacing: 2px; border-bottom: 2px solid var(--brand-yellow); padding-bottom: 5px; }
+
+        .page-title { font-family: 'Gondens', sans-serif; font-size: clamp(3rem, 10vw, 8rem); color: var(--brand-yellow); text-transform: uppercase; line-height: 0.9; margin-bottom: 80px; }
+
+        .legal-content h2 { font-family: 'Unbounded', sans-serif; font-size: 1.5rem; color: var(--brand-yellow); text-transform: uppercase; margin: 40px 0 20px; letter-spacing: 2px; }
+
+        .legal-content p { font-size: 1.1rem; opacity: 0.8; margin-bottom: 20px; }
+
+        footer { padding: 50px; text-align: center; opacity: 0.5; font-size: 0.8rem; letter-spacing: 2px; }
+    </style>
+</head>
+<body>
+    <div class="cursor-follow"><div class="cursor-icon">!!!</div></div>
+
+    <header>
+        <a href="index.html" class="logo">ETM STUDIO</a>
+        <a href="index.html" class="back-btn">Back to Studio</a>
+    </header>
+
+    <main class="container">
+        <h1 class="page-title">Terms &<br>Conditions</h1>
+
+        <div class="legal-content">
+            <p>Welcome to ETM Studio. By accessing our site and purchasing our products, you agree to the following terms.</p>
+
+            <h2>Intellectual Property</h2>
+            <p>All designs, text, and imagery on this site are the property of ETM Studio. You may not reproduce or use our content without explicit permission.</p>
+
+            <h2>Product Representation</h2>
+            <p>We strive to display our products as accurately as possible. However, colors and textures may vary slightly depending on your screen settings.</p>
+
+            <h2>Liability</h2>
+            <p>ETM Studio is not liable for any direct or indirect damages resulting from the use of our products or site.</p>
+
+            <h2>Governing Law</h2>
+            <p>These terms are governed by the laws of the jurisdiction in which ETM Studio operates.</p>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 ETM STUDIO. STITCHING THE CHAOS WORLDWIDE.</p>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.19/bundled/lenis.min.js"></script>
+    <script>
+        // Lenis Smooth Scroll
+        const lenis = new Lenis();
+        function raf(time) {
+            lenis.raf(time);
+            requestAnimationFrame(raf);
+        }
+        requestAnimationFrame(raf);
+
+        const cursor = document.querySelector('.cursor-follow');
+        window.addEventListener('mousemove', (e) => {
+            gsap.to(cursor, { x: e.clientX, y: e.clientY, duration: 0.3, ease: "power2.out" });
+        });
+        gsap.from('.page-title', { y: 100, opacity: 0, duration: 1, ease: "power4.out" });
+    </script>
+</body>
+</html>
