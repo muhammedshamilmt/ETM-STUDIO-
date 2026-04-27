@@ -38,7 +38,6 @@
             overflow-x: hidden;
             margin: 0;
             padding: 0;
-            cursor: none;
         }
 
         .container {
@@ -304,8 +303,8 @@
             position: fixed;
             top: 0;
             left: 0;
-            width: 120px;
-            height: 120px;
+            width: 90px;
+            height: 90px;
             background: var(--brand-yellow);
             border-radius: 50%;
             display: flex;
@@ -458,6 +457,15 @@
                 margin-bottom: 20px;
                 display: block;
             }
+        }
+
+        @media (hover: hover) and (pointer: fine) {
+            body { cursor: none; }
+        }
+
+        @media (hover: none) and (pointer: coarse) {
+            .cursor-follow { display: none; }
+            body, a, button { cursor: auto !important; }
         }
     </style>
 </head>
