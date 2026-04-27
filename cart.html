@@ -31,6 +31,10 @@
             --brand-white: #FFFFFF;
         }
 
+        html {
+            overflow-x: hidden;
+        }
+
         body {
             background-color: var(--brand-red);
             color: var(--brand-white);
@@ -38,7 +42,7 @@
             overflow-x: hidden;
             margin: 0;
             padding: 0;
-
+            max-width: 100vw;
         }
 
         .font-gondens {
@@ -372,6 +376,7 @@
             background-color: var(--brand-red);
             position: relative;
             z-index: 10;
+            overflow: hidden;
         }
 
         .as-seen-in-title {
@@ -466,6 +471,7 @@
             background-color: var(--brand-red);
             position: relative;
             z-index: 10;
+            overflow: hidden;
         }
 
         .product-container {
@@ -1858,6 +1864,7 @@
         </section>
 
         <!-- Marquee Section -->
+        <div style="overflow: hidden; width: 100%;">
         <div class="marquee">
             <div class="marquee-content font-gondens">
                 <span>DIY PUNK CUTE &bull; STITCH THE CHAOS &bull; ETM STUDIO &bull; DIY PUNK CUTE &bull; STITCH THE
@@ -1867,6 +1874,7 @@
                     CHAOS &bull; ETM STUDIO &bull; DIY PUNK CUTE &bull; STITCH THE CHAOS &bull; ETM STUDIO &bull;
                 </span>
             </div>
+        </div>
         </div>
 
         <!-- Perspective Text Scroll (Skiper28) -->
