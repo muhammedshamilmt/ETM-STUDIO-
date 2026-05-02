@@ -313,6 +313,11 @@
             box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
         }
 
+        /* Perspective scroll section height */
+        .perspective-scroll-section {
+            height: 300vh;
+        }
+
         .marquee {
             white-space: nowrap;
             overflow: hidden;
@@ -1472,6 +1477,11 @@
                 letter-spacing: 0.3em;
             }
 
+            /* Perspective scroll: reduce height on tablet */
+            .perspective-scroll-section {
+                height: 200vh;
+            }
+
             .product-container {
                 flex-direction: column;
                 align-items: center;
@@ -1600,13 +1610,14 @@
             }
 
             .hero-subtitle {
-                font-size: 0.75rem;
+                font-size: 1rem;
                 letter-spacing: 0.25em;
-                margin-bottom: 4rem;
+                margin-bottom: 1.5rem;
+                padding-bottom: 0.75rem;
             }
 
             .hero-title-container {
-                margin-top: 0;
+                margin-top: -30vh;
             }
 
             /* Marquee */
@@ -1754,7 +1765,7 @@
 
             /* Inspiration */
             .floating-img {
-                width: 140px !important;
+                width: 220px !important;
             }
 
             .inspiration-title {
@@ -1796,6 +1807,11 @@
             body, a, button, .cursor-pointer, .nav-btn, .sidebar-item,
             .inspiration-section, .delivery-cta {
                 cursor: auto !important;
+            }
+
+            /* Perspective scroll: reduce height on mobile */
+            .perspective-scroll-section {
+                height: 150vh !important;
             }
         }
     </style>
@@ -1878,9 +1894,9 @@
         </div>
 
         <!-- Perspective Text Scroll (Skiper28) -->
-        <section class="relative z-0 h-[300vh] w-full bg-[#E01A1A] text-black" id="perspective-scroll"
+        <section class="relative z-0 w-full bg-[#E01A1A] text-black perspective-scroll-section" id="perspective-scroll"
             data-cursor-text="&bull; PUNK CUTE &bull; STITCH CHAOS &bull;">
-            <div class="sticky top-0 h-screen flex items-center justify-center bg-transparent overflow-hidden py-20"
+            <div class="sticky top-0 h-screen flex items-center justify-center bg-transparent overflow-hidden py-8 md:py-20"
                 style="perspective: 130px;">
 
                 <div id="perspective-text-skiper"
@@ -2412,8 +2428,10 @@
         });
 
         // Perspective Scroll Animation (Exact Skiper28 Logic)
+        const isMobile = window.innerWidth <= 640;
+        const perspStartY = isMobile ? 300 : 800;
         gsap.fromTo("#perspective-text-skiper", {
-            transform: "rotateX(30deg) translateY(800px) translateZ(10px)"
+            transform: `rotateX(30deg) translateY(${perspStartY}px) translateZ(10px)`
         }, {
             transform: "rotateX(30deg) translateY(0px) translateZ(10px)",
             ease: "none",
